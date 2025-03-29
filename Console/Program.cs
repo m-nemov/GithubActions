@@ -84,13 +84,15 @@ public static double Multiply(string? x, string? y)
 	return double.Parse(x) * double.Parse(y);
 }
 
-public static double Divide(string? x, string? y)
+public static double Divide(string x, string y)
 {
-	if (x == null || y == null)
-		throw new ArgumentNullException();
-	return double.Parse(x) / double.Parse(y);
+    double denominator = double.Parse(y);
+    if (denominator == 0)
+    {
+        throw new DivideByZeroException();
+    }
+    return double.Parse(x) / denominator;
 }
-
 public static double Power(string? x, string? y)
 {
 	if (x == null || y == null)
