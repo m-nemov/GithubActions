@@ -63,29 +63,41 @@ public class Program
 		return Console.ReadLine()?.Trim() ?? throw new InvalidOperationException();
 	}
 
-	public static double Add(string x, string y)
-	{
-		return double.Parse(x) + double.Parse(y);
-	}
-
-	public static double Subtract(string x, string y)
-	{
-		return double.Parse(x) - double.Parse(y);
-	}
-
-	public static double Multiply(string x, string y)
-	{
-		return double.Parse(x) * double.Parse(y);
-	}
-
-	public static double Divide(string x, string y)
-	{
-		return double.Parse(x) / double.Parse(y);
-	}
-
-	// Implement this method following a similar pattern as above
-	public static double Power(string x, string y)
+	public static double Add(string? x, string? y)
 {
-    return Math.Pow(double.Parse(x), double.Parse(y));
+	if (x == null || y == null)
+		throw new ArgumentNullException();
+	return double.Parse(x) + double.Parse(y);
 }
+
+public static double Subtract(string? x, string? y)
+{
+	if (x == null || y == null)
+		throw new ArgumentNullException();
+	return double.Parse(x) - double.Parse(y);
+}
+
+public static double Multiply(string? x, string? y)
+{
+	if (x == null || y == null)
+		throw new ArgumentNullException();
+	return double.Parse(x) * double.Parse(y);
+}
+
+public static double Divide(string x, string y)
+{
+    double denominator = double.Parse(y);
+    if (denominator == 0)
+    {
+        throw new DivideByZeroException();
+    }
+    return double.Parse(x) / denominator;
+}
+public static double Power(string? x, string? y)
+{
+	if (x == null || y == null)
+		throw new ArgumentNullException();
+	return Math.Pow(double.Parse(x), double.Parse(y));
+}
+
 }
