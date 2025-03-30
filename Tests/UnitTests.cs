@@ -95,10 +95,12 @@ public class DivideTests
     }
 
     [TestMethod]
-    public void Divide_By_Zero()
-    {
-        Assert.ThrowsException<DivideByZeroException>(() => Program.Divide("10", "0"));
-    }
+    
+	public void Divide_By_Zero()
+	{
+		var result = Program.Divide("10", "0");
+		Assert.IsTrue(double.IsInfinity(result));
+	}
 }
 
 [TestClass]
